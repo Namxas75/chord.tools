@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Music Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            display: inline-block;
+            text-align: left;
+        }
+        h1 {
+            font-size: 4em;
+            color: #333;
+        }
+        p {
+            font-size: 2em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Daily Music Inspiration</h1>
+        <p id="jazzScale">Jazz Scale: </p>
+        <p id="toneRow">12-Tone Row: </p>
+        <p id="chordSymbol">Chord Symbol: </p>
+    </div>
+
+    <script>
+        const pitches = ["A","Bb","B","C","C#","D","Eb","E","F","F#","G","Ab"];
+        const colors = [ "-","-7","-6","-6/9","-9","-11","-M7",
+                        "","M7","M9","M7#11","M7#5","M6","M6/9",
+                        "7","9","13","7#11","13#11","13b9#11","7b9","13b9", "13#9", "7#9b13",
+                        "sus4", "sus2", "sus9", "sus13", "sus13b9"
+                     ]
+
+        const jazzScales = [    "Major Scale", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian", 
+                                "Melodic Minor", "Whole Tone", "Diminished", 
+                                "Major Pentatonic", "Minor Pentatonic", "Minor 6 Pentatonic", "Blues"];
+        
+        function generate12ToneRow() {
+            let row = Array.from({ length: 12 }, (_, i) => i);
+            for (let i = row.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [row[i], row[j]] = [row[j], row[i]];
+            }
+            // return row;
+            return row.map(number => pitches[number]);
+        }
+        
+        function displayRandomValues() {
+            const chordPitch = pitches[Math.floor(Math.random() * pitches.length)];
+            const scalePitch = pitches[Math.floor(Math.random() * pitches.length)];
+            const chordColor = colors[Math.floor(Math.random() * colors.length)];
+            const chordSymbol = chordPitch + chordColor;
+            const jazzScale = jazzScales[Math.floor(Math.random() * jazzScales.length)];
+            const toneRow = generate12ToneRow().join(", ");
+            
+            document.getElementById("chordSymbol").textContent = `Chord Symbol: ${chordSymbol}`;
+            document.getElementById("jazzScale").textContent = `Jazz Scale: ${scalePitch} ${jazzScale}`;
+            document.getElementById("toneRow").textContent = `12-Tone Row: ${toneRow}`;
+        }
+        
+        function setDailyValues() {
+            const today = new Date().toISOString().slice(0, 10);
+            const storedDate = localStorage.getItem("date");
+            
+            if (storedDate !== today) {
+            // if (storedDate == today) {
+                displayRandomValues();
+                localStorage.setItem("date", today);
+                localStorage.setItem("chordSymbol", document.getElementById("chordSymbol").textContent);
+                localStorage.setItem("jazzScale", document.getElementById("jazzScale").textContent);
+                localStorage.setItem("toneRow", document.getElementById("toneRow").textContent);
+            } else {
+                document.getElementById("chordSymbol").textContent = localStorage.getItem("chordSymbol");
+                document.getElementById("jazzScale").textContent = localStorage.getItem("jazzScale");
+                document.getElementById("toneRow").textContent = localStorage.getItem("toneRow");
+            }
+        }
+        
+        window.onload = setDailyValues;
+    </script>
+</body>
+</html>
