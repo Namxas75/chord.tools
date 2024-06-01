@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Music Generator</title>
+    <title>Jazz practice inspiration</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -26,13 +26,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>Daily Music Inspiration</h1>
-        <p id="jazzScale">Jazz Scale: </p>
-        <p id="toneRow">12-Tone Row: </p>
-        <p id="chordSymbol">Chord Symbol: </p>
+        <h1>Jazz practice inspiration</h1>
+        <p id="jazzScale"></p>
+        <p id="toneRow"></p>
+        <p id="chordSymbol"></p>
+        <p id="jazzStandard"></p>
     </div>
 
     <script>
+        
+        const jazzStandards = ["All Blues","All of Me","All the Things You Are","Alone Together","Autumn Leaves","Beautiful Love","Blue Bossa","Blue Monk","Body and Soul","But Not for Me","Bye Bye Blackbird","Cantaloupe Island","Caravan","Chelsea Bridge","Cherokee","Come Rain or Come Shine","Corcovado (Quiet Nights of Quiet Stars)","Days of Wine and Roses","Desafinado","Dolphin Dance","Donna Lee","Doxy","Easy Living","Embraceable You","Equinox","Footprints","Four","Freddie Freeloader","Georgia on My Mind","Giant Steps","God Bless the Child","Have You Met Miss Jones?","Here's That Rainy Day","How High the Moon","I Can't Get Started","I Could Write a Book","I Got Rhythm","I Love You","I Remember You","I Should Care","I Thought About You","I'll Remember April","I'm Getting Sentimental Over You","Impressions","In a Sentimental Mood","In Your Own Sweet Way","It Could Happen to You","It's Only a Paper Moon","Joy Spring","Just Friends","Just One of Those Things","Lady Bird","Lullaby of Birdland","Mack the Knife","Maiden Voyage","Misty","Moanin'","Moment's Notice","Mr. P.C.","My Favorite Things","My Foolish Heart","My Funny Valentine","My One and Only Love","My Romance","Nardis","Nefertiti","Night and Day","Nostalgia in Times Square","Nuages","Old Devil Moon","Oleo","On Green Dolphin Street","Once I Loved (Amor Em Paz)","Ornithology","Out of Nowhere","Pent Up House","Perdido","Polka Dots and Moonbeams","Prelude to a Kiss","Recorda Me","Round Midnight","Satin Doll","Scrapple from the Apple","So What","Softly, as in a Morning Sunrise","Solar","Someday My Prince Will Come","Song for My Father","Sophisticated Lady","St. Thomas","Stablemates","Star Eyes","Stella by Starlight","Stolen Moments","Sugar","Summertime","Sweet Georgia Brown","Take Five","Take the 'A' Train","There Is No Greater Love","There Will Never Be Another You","They Can't Take That Away from Me","Triste","Tune Up","Turn Out the Stars","Up Jumped Spring","Waltz for Debby","Well, You Needn't","What Is This Thing Called Love?","What's New?","When I Fall in Love","Windows","Yesterdays","You Are My Sunshine","You Don't Know What Love Is","You'd Be So Nice to Come Home To","A Night in Tunisia","Afro Blue","Airegin","Alfie's Theme","Angel Eyes","April in Paris","As Time Goes By","At Last","At the Mambo Inn","Au Privave","Autumn in New York","Bags' Groove","Baltimore Oriole","Basin Street Blues","Bernie's Tune","Billie's Bounce","Birdland","Black Coffee","Blue Skies","Bluesette","Body and Soul","Boplicity","Bouncing with Bud","Broadway","But Beautiful","C Jam Blues","Call Me","Cantaloupe Island","Chameleon","Cherokee","Chitlins con Carne","Close Your Eyes","Come Sunday","Compared to What","Confirmation","Conception","Con Alma","Contemplation","Corcovado","Cottontail","Cry Me a River","D Natural Blues","Daahoud","Dat Dere","Dear Old Stockholm","Delilah","Django","Doin' the Pig","Don'cha Go 'Way Mad","Don't Blame Me","Don't Get Around Much Anymore","Don't Let Me Be Misunderstood","Don't Misunderstand","Don't Worry 'Bout Me","Do Nothing Till You Hear from Me","Down for Double","Dream","Duke Ellington's Sound of Love","Duke's Place","Early Autumn","Easy to Love","Ecaroh","Eighty-One","El Gaucho","El Hombre","El Toro","Emily","Enchanted Lady","Eternal Triangle","Ev'ry Time We Say Goodbye","Exactly Like You","Exodus","Fabia","Fair Weather","Falling in Love with Love","Fee-Fi-Fo-Fum","Feel Like Makin' Love","Fever","Fine and Mellow","Fly Me to the Moon","Follow Your Heart","Footprints","For All We Know","For Heaven's Sake","For Sentimental Reasons","Forest Flower","Four Brothers","Freedom Jazz Dance","Full Moon and Empty Arms","Fungii Mama","Further Adventures","Gee Baby, Ain't I Good to You","Georgia on My Mind","Get Happy","Get Out of Town","Giant Steps","Gibraltar","Gingerbread Boy","Girl from Ipanema","Glad to Be Unhappy","Good Bait","Good Morning Heartache","Goodbye Pork Pie Hat","Groovin' High","Hackensack","Half Nelson","Hamp's Boogie Woogie","Happy Talk","Harlem Nocturne","Here's That Rainy Day","Honeysuckle Rose","How Deep Is the Ocean?","How High the Moon","How Insensitive","I Can't Get Started","I Concentrate on You","I Could Write a Book","I Cover the Waterfront","I Didn't Know What Time It Was","I Get a Kick Out of You","I Got It Bad","I Got Rhythm","I Gotta Right to Sing the Blues","I Hear a Rhapsody","I Let a Song Go Out of My Heart","I Love Paris","I Loves You, Porgy","I Mean You","I Remember Clifford","I Should Care","I Thought About You","I Want to Talk About You","I Wish I Knew","I'll Close My Eyes","I'll Remember April","I'm Beginning to See the Light","I'm Confessin'","I'm Getting Sentimental Over You","I'm in the Mood for Love","I've Found a New Baby","I've Got the World on a String","I've Got You Under My Skin","If I Had You","If I Should Lose You","If You Never Come to Me","Ill Wind","Imagination","Impressions","In a Mellow Tone","In a Sentimental Mood","In the Mood","In the Wee Small Hours of the Morning","Indian Summer","Indiana (Back Home Again in Indiana)","Inner Urge","Invitation","Isfahan","Isn't It Romantic?","Israel","It Ain't Necessarily So","It Could Happen to You","It Don't Mean a Thing","It Might as Well Be Spring","It's All Right with Me","It's Only a Paper Moon","Jordu","Jitterbug Waltz","Johnny Come Lately","Joy Spring","Jump Monk","June in January","Just Friends","Just Squeeze Me","Just the Way You Are","K.C. Blues","Killer Joe","La Vie en Rose","Lament","Laura","Lazy Bird","Lazy River","Lazybones","Lennie's Pennies","Lester Leaps In","Let It Snow! Let It Snow! Let It Snow!","Let's Call the Whole Thing Off","Like Someone in Love","Limehouse Blues","Line for Lyons","Little Sunflower","Livery Stable Blues","Lonely Woman","Look to the Sky","Love for Sale","Love Walked In","Lover Man","Lover","Lullaby in Rhythm","Lullaby of the Leaves","Lush Life","Mack the Knife","Maiden Voyage","Make Someone Happy","Manteca","Meditation","Michelle","Midnight Sun","Milano","Milestones","Minority","Misty","Miyako","Moment's Notice","Mood Indigo","Moon and Sand","Moon River","Moonchild","Moondance","Moonlight Becomes You","Moonglow","Moonlight in Vermont","More I See You","More Than You Know","Mr. Clean","Mr. Magic","Mr. P.C.","My Baby Just Cares for Me","My Blue Heaven","My Foolish Heart","My Funny Valentine","My Heart Belongs to Daddy","My Man's Gone Now","My Melancholy Baby","My One and Only Love","My Romance","My Shining Hour","My Ship","Naima","Nardis","Nature Boy","Nefertiti","Never Let Me Go","Nica's Dream","Nights in White Satin","No More Blues","Norwegian Wood","Nostalgia in Times Square","Nuages","O Grande Amor","Old Devil Moon","Oleo","On a Clear Day","On Green Dolphin Street","On the Sunny Side of the Street","Once I Loved","Once in a While","One Note Samba","Only Trust Your Heart","Ornithology","Out of Nowhere","Over the Rainbow","Pannonica","Parker's Mood","Peace","Peggy's Blue Skylight","Pent Up House","People","Perdido","Polka Dots and Moonbeams","Ponce","Portrait of Jennie","Prelude to a Kiss","P.S. I Love You","Pure Imagination","Quiet Nights of Quiet Stars","Quiet Now","Ray's Idea","Recorda Me","Red Clay","Red Top","Reflections","Reincarnation of a Lovebird","Repetition","Round Midnight","Ruby, My Dear","Satin Doll","Scotch and Soda","Scrapple from the Apple","Second Line","Seems So Long Ago, Nancy","Serenade to a Soul Sister","Serenade to Sweden","Seven Come Eleven","Seven Steps to Heaven","Shaw 'Nuff","Sidewinder","Sing, Sing, Sing","Skating in Central Park","Skylark","Smoke Gets in Your Eyes","Softly, as in a Morning Sunrise","Solitude","Some Day My Prince Will Come","Some Other Time","Somebody Loves Me","Someday My Prince Will Come","Someone to Watch Over Me","Song for My Father","Sophisticated Lady","Soul Eyes","Soultrane","Speak Low","St. James Infirmary","St. Louis Blues","St. Thomas","Stablemates","Star Eyes","Star-Crossed Lovers","Stardust","Stella by Starlight","Stolen Moments","Straight, No Chaser","Strange Fruit","Summertime","Sunny Side of the Street","Surrey with the Fringe on Top","S'wonderful","Take Five","Take the 'A' Train","Tangerine","Tea for Two","Tenor Madness","Thanks for the Memory","That Old Black Magic","That Old Feeling","The Girl from Ipanema","The Look of Love","The Nearness of You","The Night Has a Thousand Eyes","The Peacocks","The Shadow of Your Smile","The Song Is You","The Surrey with the Fringe on Top","The Touch of Your Lips","The Way You Look Tonight","There Is No Greater Love","There Will Never Be Another You","These Foolish Things","They Can't Take That Away from Me","Things Ain't What They Used to Be","This I Dig of You","This Masquerade","Three Little Words","Time After Time","Tis Autumn","Tones for Joan's Bones","Too Close for Comfort","Tour de Force","Triste","Tune Up","Turn Out the Stars","Twisted","Ugly Beauty","Un Poco Loco","Unit 7","Unforgettable","Up Jumped Spring","Valse Hot","Waltz for Debby","Watch What Happens","Wave","We'll Be Together Again","Well, You Needn't","We'll Be Together Again","Well, You Needn't","What a Wonderful World","What Are You Doing the Rest of Your Life?","What Is This Thing Called Love?","What's New?","When I Fall in Love","When Lights Are Low","When Sunny Gets Blue","Whisper Not","Who Can I Turn To?","Willow Weep for Me","Windows","Witchcraft","Without a Song","Woody 'n You","Yardbird Suite","Yesterdays","You Are My Sunshine","You Are the Sunshine of My Life","You Don’t Know What Love Is","You'd Be So Nice to Come Home To","Young at Heart"];
         const pitches = ["A","Bb","B","C","C#","D","Eb","E","F","F#","G","Ab"];
         const colors = [ "-","-7","-6","-6/9","-9","-11","-M7",
                         "","M7","M9","M7#11","M7#5","M6","M6/9",
@@ -55,6 +58,7 @@
         }
         
         function displayRandomValues() {
+            const jazzStandard = jazzStandards[Math.floor(Math.random() * jazzStandards.length)];
             const chordPitch = pitches[Math.floor(Math.random() * pitches.length)];
             const scalePitch = pitches[Math.floor(Math.random() * pitches.length)];
             const chordColor = colors[Math.floor(Math.random() * colors.length)];
@@ -62,9 +66,10 @@
             const jazzScale = jazzScales[Math.floor(Math.random() * jazzScales.length)];
             const toneRow = generate12ToneRow().join(", ");
             
-            document.getElementById("chordSymbol").textContent = `Chord Symbol: ${chordSymbol}`;
-            document.getElementById("jazzScale").textContent = `Jazz Scale: ${scalePitch} ${jazzScale}`;
-            document.getElementById("toneRow").textContent = `12-Tone Row: ${toneRow}`;
+            document.getElementById("chordSymbol").textContent = `Chord of the day: ${chordSymbol}`;
+            document.getElementById("jazzScale").textContent = `Scale of the day: ${scalePitch} ${jazzScale}`;
+            document.getElementById("toneRow").textContent = `12-Tone Row of the day: ${toneRow}`;
+            document.getElementById("jazzStandard").textContent = `Standard of the day: ${jazzStandard}`;
         }
         
         function setDailyValues() {
@@ -78,10 +83,12 @@
                 localStorage.setItem("chordSymbol", document.getElementById("chordSymbol").textContent);
                 localStorage.setItem("jazzScale", document.getElementById("jazzScale").textContent);
                 localStorage.setItem("toneRow", document.getElementById("toneRow").textContent);
+                localStorage.setItem("jazzStandard", document.getElementById("jazzStandard").textContent);
             } else {
                 document.getElementById("chordSymbol").textContent = localStorage.getItem("chordSymbol");
                 document.getElementById("jazzScale").textContent = localStorage.getItem("jazzScale");
                 document.getElementById("toneRow").textContent = localStorage.getItem("toneRow");
+                document.getElementById("jazzStandard").textContent = localStorage.getItem("jazzStandard");
             }
         }
         
